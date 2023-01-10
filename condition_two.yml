@@ -1,0 +1,47 @@
+---
+- hosts: webservers
+  user: vinny
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing httpd
+      yum: 
+       name: httpd
+       state: installed
+      when: ansible_os_family == "RedHat"
+
+    - name: start srevice
+      service: 
+        name: httpd
+        state: started
+        enabled: yes
+      when: ansible_os_family == "RedHat"
+
+    - name: installing apache
+      apt: 
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: service start
+      service: 
+        name: apache2
+        state: started
+        enabled: yes
+      when: ansible_os_family == "Debian"
+
+    - name: copy index.html file
+      copy:
+        src: /home/vinny/index.html
+        dest: /var/www/html
+        owner: raji
+        mode: 0666
+
+
+
+
+
+
+
+

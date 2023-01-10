@@ -1,0 +1,9 @@
+---
+- hosts: webservers
+  #become: yes
+  connection: ssh
+  tasks:
+    - name: installing softwares
+      yum:
+        name: git
+        state: present

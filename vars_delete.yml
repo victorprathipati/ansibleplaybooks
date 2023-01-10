@@ -1,0 +1,12 @@
+--- #deletion
+- hosts: webservers
+  user: vinny
+  become: yes
+  connection: ssh
+
+  vars:
+    pkgname: httpd
+
+  tasks:
+    - name: deletion of packages
+      action: yum name='{{pkgname}}' state=absent

@@ -1,0 +1,14 @@
+--- # conditions for installinf s/ws
+- hosts: webservers
+  user: vinny
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: install apache for debian
+      command: apt-get install apache2 -y
+      when: ansible_os_family == "Debian"
+
+    - name: install pache for redhat
+      command: yum install httpd -y
+      when: ansible_os_family == "RedHat"

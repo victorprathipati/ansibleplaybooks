@@ -1,0 +1,12 @@
+---
+- hosts: webservers
+  user: vinny
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: uninstalling software
+      yum:
+        name: [ 'git' , 'docker' , 'tree' , 'java' , 'wget' ]
+        state: absent
+

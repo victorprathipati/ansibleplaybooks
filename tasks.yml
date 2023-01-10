@@ -1,0 +1,10 @@
+--- # this is tasks playbook
+- hosts: webservers
+  user: vinny
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing httpd in webservers
+      action: yum name=httpd state=installed
+

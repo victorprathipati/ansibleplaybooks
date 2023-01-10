@@ -1,0 +1,17 @@
+---
+- name: multiple tasks in one playbook
+  hosts: webservers
+  user: vinny
+  become: yes
+  connection: ssh
+
+
+  tasks:
+    - name: creating a file
+      file: path=/home/vinny/mummy state=touch
+
+    - name: creating a directory
+      file: path=/home/vinny/nagababu state=directory
+
+    - name: copying a file from ansible server
+      copy: src=./file2 dest=/home/vinny

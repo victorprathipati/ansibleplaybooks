@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  user: vinny
+  become: yes
+  connection: ssh
+
+
+  tasks:
+    - name: creating multiple users
+      user: name='{{item}}' state=absent
+      with_items: 
+        - Lachakka
+        
+        

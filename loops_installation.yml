@@ -1,0 +1,16 @@
+---
+- hosts: webservers
+  user: vinny
+  become: yes
+  connection: ssh
+
+  tasks:
+    - name: installing softwares in loop
+      yum: name='{{item}}' state=installed
+      with_items:
+         - httpd
+         - java
+         - git
+         - docker
+         - mysql
+         - tree

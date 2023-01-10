@@ -1,0 +1,12 @@
+---
+- name: multiple software installation
+  hosts: webservers
+  user: vinny
+  become: yes
+  connection: ssh
+
+  tasks: 
+    - name: installing software
+      yum: 
+       name: ['git' , 'docker' , 'mysql' , 'tree' , 'wget' , 'java']
+       state: present

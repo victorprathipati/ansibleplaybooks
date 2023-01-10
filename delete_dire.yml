@@ -1,0 +1,11 @@
+---
+- name: my test playbook
+  hosts: webservers
+  user: vinny
+  become: true
+  connection: ssh
+  tasks:
+    - name: deleting a directory
+      file:
+        path: /home/vinny/victor
+        state: absent
